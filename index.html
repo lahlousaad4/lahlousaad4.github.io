@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>Portfolio de Saad Lahlou</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #0a192f;
+      color: #8892b0;
+      line-height: 1.6;
+    }
+
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    header {
+      padding: 2rem;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      background-color: rgba(10, 25, 47, 0.8);
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: flex-end;
+      list-style-type: none;
+    }
+
+    nav ul li {
+      margin-left: 2rem;
+    }
+
+    nav ul li a {
+      color: #64ffda;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #ffffff;
+    }
+
+    section {
+      padding: 5rem 10%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    h1, h2 {
+      color: #ccd6f6;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: 4rem;
+      font-weight: 700;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #64ffda;
+      transform: skew(-20deg);
+    }
+
+    .projet-grid, .competence-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .projet-card {
+      background-color: #112240;
+      max-height: 70vh;
+      overflow-y: auto;
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: transform 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .projet-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .projet-card h3 {
+      color: #e6f1ff;
+      margin-bottom: 1rem;
+    }
+
+    .competence-item {
+      text-align: center;
+    }
+
+    .competence-item svg {
+      width: 100px;
+      height: 100px;
+    }
+
+    .competence-item circle {
+      fill: none;
+      stroke: #233554;
+      stroke-width: 10;
+    }
+
+    .competence-item .progress {
+      stroke: #64ffda;
+      stroke-dasharray: 283;
+      stroke-dashoffset: 283;
+      transition: stroke-dashoffset 1s ease-in-out;
+    }
+
+    .competence-item span {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    input, textarea, button {
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #233554;
+      color: #e6f1ff;
+    }
+
+    button {
+      background-color: #64ffda;
+      color: #0a192f;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45c3a8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #020c1b;
+    }
+
+    .enhanced-animate {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .enhanced-animate.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .contact-button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+      background-color: #233554;
+      color: #64ffda;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .contact-button:hover {
+      transform: translateY(-5px);
+      background-color: #2c4269;
+    }
+
+    .contact-button i {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .download-cv {
+      display: block;
+      margin-top: 20px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 8px 16px;
+      background-color: #193e6f;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 14px;
+      width: auto;
+      max-width: 200px;
+      text-align: center;
+    }
+    nav ul li a::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: #64ffda;
+      transition: width 0.4s ease;
+    }
+
+    nav ul li a:hover::after,
+    nav ul li a.clicked::after {
+      width: 100%;
+    }
+
+    #about-me {
+      margin: 50px 0;
+      background-color: #112240;
+    }
+
+    .about-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .about-text {
+      flex: 1;
+      padding-right: 20px;
+    }
+    
+
+    .about-image img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+    }
+
+    #competences {
+      background-color: #112240;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    function toggleMenu() {
+      const nav = document.querySelector('nav');
+      nav.classList.toggle('active');
+    }
+  </script>
+</head>
+<body>
+<div id="particles-js"></div>
+
+<header>
+  <nav>
+    <ul>
+      <li><a href="#accueil">Accueil</a></li>
+      <li><a href="#about-me">À propos de moi</a></li>
+      <li><a href="#projets">Projets</a></li>
+      <li><a href="#competences">Compétences</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section id="accueil">
+  <h1 class="floating">LAHLOU Saad</h1>
+  <p>Développeur informatique</p>
+</section>
+
+<section id="about-me">
+  <div class="about-container">
+    <div class="about-text">
+      <h2>À propos de moi</h2>
+        <p>
+          Salut ! Je suis Saad Lahlou, je suis étudiant à l'IUT de Lens et j'aime coder ce que j'aime. Relier mes passions à mes projets de développement est une source constante d'inspiration. Si je peux simplifier une tâche du quotidien, j'adore trouver des solutions et relever des défis. Mon objectif est de créer des solutions innovantes qui améliorent l'expérience utilisateur et facilitent les tâches quotidiennes. J'ai une solide expérience en développement web, automatisation, et gestion des API. Si vous souhaitez en apprendre plus sur moi, ou me contacter, n'hésitez plus, vous pouvez explorer ce site ou télécharger mon CV ! :)
+        </p>
+    </div>
+    <div class="about-image">
+        <img src="image_saad_lahlou.png" alt="Image Saad Lahlou">
+  </div>
+  </div>
+</section>
+
+<section id="projets">
+  <h2>Mes Projets</h2>
+  <div class="projet-grid">
+    <a href="#" class="projet-card enhanced-animate">
+      <h3>
+        Bot Spotify pour l'automatisation en utilisant Selenium</h3>
+      <p>Ce projet consiste en un bot développé en Python utilisant Selenium pour automatiser des interactions sur la plateforme Spotify. Le bot est capable de créer des comptes Spotify et d’effectuer des actions prédéfinies telles que liker des playlists, ajouter des titres à des playlists personnalisées, et bien plus, tout en automatisant la résolution de CAPTCHA. Ce projet met en avant mes compétences en automatisation, en gestion des API, et en utilisation de Selenium pour interagir de manière fluide avec des sites web complexes. Il est idéal pour automatiser des tâches répétitives sur des plateformes de streaming, récupérer des données via le web scraping, et gérer du threading afin de créer de nouveaux drivers en simultané. Ce projet combine efficacité et technologie pour optimiser l'expérience utilisateur.</p>
+    </a>
+    <a href="#" class="projet-card enhanced-animate">
+      <h3>
+        Spotify Insights : Application Flask pour Explorer les Top Artistes et Chansons</h3>
+      <p>Ce projet consiste en une application web développée avec Flask et utilisant l'API de Spotify pour afficher les artistes, les chansons et les genres les plus écoutés sur différentes périodes : 4 semaines, 6 mois et 12 mois. L'application offre également une fonctionnalité de recherche où l'utilisateur peut entrer un terme, et l'application récupère les chansons les plus adaptées avec des informations détaillées telles que le titre, l'artiste, la durée et la date de sortie. En outre, pour les artistes, le projet utilise Selenium pour effectuer du web scraping et récupérer des données supplémentaires comme le nombre d'auditeurs mensuels, la description de l'artiste, ainsi que les cinq villes où l'artiste est le plus écouté. Ce projet combine la gestion de l'API de Spotify et l'automatisation du scraping pour offrir une expérience interactive et riche en données musicales.</p>
+    </a>
+    <a href="#" class="projet-card enhanced-animate">
+      <h3>
+        StreamBot - IPTV Discord Bot</h3>
+      <p>Ce projet consiste en un bot Discord développé avec Python et la bibliothèque discord.py, permettant aux utilisateurs d'interagir avec un système IPTV. Le bot charge une liste de chaînes IPTV au format M3U et propose une fonctionnalité de recherche pour trouver les chaînes correspondant à un mot-clé donné (par exemple, un nom de chaîne). Lorsque l'utilisateur lance la commande de recherche, le bot répond avec les chaînes correspondant à sa recherche et lui fournit un lien pour regarder la chaîne en direct via un serveur Flask. Le bot utilise également des commandes permettant de jouer des chaînes en utilisant un lecteur intégré sur un serveur local, avec une interface simple et intuitive.</p>
+    </a>
+  </div>
+</section>
+
+<section id="competences">
+  <h2>Mes Compétences</h2>
+  <div class="competence-grid">
+    <div class="competence-item enhanced-animate" data-skill="90">
+      <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="45" />
+        <circle cx="50" cy="50" r="45" class="progress" />
+      </svg>
+      <span>HTML/CSS</span>
+    </div>
+    <div class="competence-item enhanced-animate" data-skill="80">
+      <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="45" />
+        <circle cx="50" cy="50" r="45" class="progress" />
+      </svg>
+      <span>Python</span>
+    </div>
+    <div class="competence-item enhanced-animate" data-skill="75">
+      <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="45" />
+        <circle cx="50" cy="50" r="45" class="progress" />
+      </svg>
+      <span>Java/JavaFX</span>
+    </div>
+    <div class="competence-item enhanced-animate" data-skill="80">
+      <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="45" />
+        <circle cx="50" cy="50" r="45" class="progress" />
+      </svg>
+      <span>PostgreSQL</span>
+    </div>
+    <div class="competence-item enhanced-animate" data-skill="70">
+      <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="45" />
+        <circle cx="50" cy="50" r="45" class="progress" />
+      </svg>
+      <span>PHP</span>
+    </div>
+    <div class="competence-item enhanced-animate" data-skill="90">
+      <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="45" />
+        <circle cx="50" cy="50" r="45" class="progress" />
+      </svg>
+      <span>Git</span>
+    </div>
+    <div class="competence-item enhanced-animate" data-skill="90">
+      <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="45" />
+        <circle cx="50" cy="50" r="45" class="progress" />
+      </svg>
+      <span>Anglais</span>
+    </div>
+    <div class="competence-item enhanced-animate" data-skill="95">
+      <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="45" />
+        <circle cx="50" cy="50" r="45" class="progress" />
+      </svg>
+      <span>Selenium</span>
+    </div>
+    <div class="competence-item enhanced-animate" data-skill="90">
+      <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="45" />
+        <circle cx="50" cy="50" r="45" class="progress" />
+      </svg>
+      <span>API</span>
+    </div>
+    <div class="competence-item enhanced-animate" data-skill="80">
+      <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="45" />
+        <circle cx="50" cy="50" r="45" class="progress" />
+      </svg>
+      <span>Web Scraping</span>
+    </div>
+  </div>
+
+  <a href="CV-Lahlou-Saad.pdf" download class="download-cv">
+    <i class="fas fa-download"></i>
+    Télécharger mon CV
+  </a>
+</section>
+
+
+<section id="contact">
+  <h2>Me Contacter</h2>
+  <div class="contact-buttons">
+    <a href="https://github.com/lahlousaad4" target="_blank" class="contact-button">
+      <i class="fab fa-github"></i>
+      GitHub
+    </a>
+    <a href="mailto:tlahlou.saad@gmail.com" class="contact-button">
+      <i class="fas fa-envelope"></i>
+      Email
+    </a>
+    <a href="https://www.linkedin.com/in/saad-lahlou-8523982a2/" target="_blank" class="contact-button">
+      <i class="fab fa-linkedin"></i>
+      LinkedIn
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2024 Saad Lahlou. Tous droits réservés.</p>
+</footer>
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+
+      window.scrollTo({
+        top: targetElement.offsetTop,
+        behavior: 'smooth'
+      });
+    });
+  });
+  particlesJS('particles-js', {
+    "particles": {
+      "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+      "color": { "value": "#ffffff" },
+      "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" }, "polygon": { "nb_sides": 5 } },
+      "opacity": { "value": 0.5, "random": false, "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false } },
+      "size": { "value": 3, "random": true, "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false } },
+      "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 },
+      "move": { "enable": true, "speed": 6, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } }
+    },
+    "interactivity": {
+      "detect_on": "canvas",
+      "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+      "modes": { "grab": { "distance": 400, "line_linked": { "opacity": 1 } }, "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 }, "repulse": { "distance": 200, "duration": 0.4 }, "push": { "particles_nb": 4 }, "remove": { "particles_nb": 2 } }
+    },
+    "retina_detect": true
+  });
+
+  function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  }
+
+  function handleScroll() {
+    const elements = document.querySelectorAll('.enhanced-animate');
+    elements.forEach(el => {
+      if (isElementInViewport(el)) {
+        el.classList.add('visible');
+      }
+    });
+
+    const competenceItems = document.querySelectorAll('.competence-item');
+    competenceItems.forEach(item => {
+      if (isElementInViewport(item) && !item.classList.contains('animated')) {
+        const skill = item.getAttribute('data-skill');
+        const circle = item.querySelector('.progress');
+        const radius = circle.r.baseVal.value;
+        const circumference = radius * 2 * Math.PI;
+        const offset = circumference - (skill / 100) * circumference;
+        circle.style.strokeDasharray = `${circumference} ${circumference}`;
+        circle.style.strokeDashoffset = offset;
+        item.classList.add('animated');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('load', handleScroll);
+</script>
+</body>
+</html>
