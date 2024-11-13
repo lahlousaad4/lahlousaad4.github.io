@@ -32,11 +32,11 @@ Voici quelques-uns des projets que j'ai réalisés :
 
 En tant qu'étudiant en informatique, j'ai acquis diverses compétences techniques. Voici un aperçu de mes compétences :
 
-- **Développement web** : HTML, CSS, JavaScript, React, Vue.js
-- **Backend** : Node.js, Python (Flask/Django), API REST
-- **Bases de données** : MySQL, PostgreSQL, MongoDB
-- **Outils de versioning** : Git, GitHub
-- **Autres** : Docker, Jekyll, GitHub Pages
+- **Développement web** : HTML, CSS, JavaScript, PHP
+- **Backend** : Python (Flask), API, Java
+- **Bases de données** : MySQL, PostgreSQL
+- **Outils de versioning** : Git, GitHub, GitLab
+- **Autres** : Docker, Jekyll, GitHub Pages, Suite Adobe, Selenium
 
 ## Contact
 
