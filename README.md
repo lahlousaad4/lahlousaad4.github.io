@@ -42,9 +42,9 @@ En tant qu'étudiant en informatique, j'ai acquis diverses compétences techniqu
 
 Si tu souhaites discuter d'opportunités professionnelles ou simplement en savoir plus sur mes projets, n'hésite pas à me contacter :
 
-- Email : [saad.lahlou@example.com](mailto:tlahlou.saad@gmail.com)
-- LinkedIn : [Saad Lahlou LinkedIn](https://www.linkedin.com/in/saad-lahlou)
-- GitHub : [Saad Lahlou GitHub](https://github.com/lahlousaad4)
+- Email : [tlahlou.saad@gmail.com](mailto:tlahlou.saad@gmail.com)
+- LinkedIn : [Mon LinkedIn](https://www.linkedin.com/in/saad-lahlou)
+- GitHub : [Mon GitHub](https://github.com/lahlousaad4)
 
 Merci de visiter mon portfolio, et n'hésite pas à me contacter ! 🚀
 
