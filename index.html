@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <title>Portfolio de Saad Lahlou</title>
+  <title data-i18n="titreSite">Portfolio de Saad Lahlou</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
@@ -272,7 +272,7 @@
       flex: 1;
       padding-right: 20px;
     }
-    
+
 
     .about-image img {
       width: 100%;
@@ -283,6 +283,111 @@
     #competences {
       background-color: #112240;
     }
+
+    #langues {
+      background-color: #112240;
+      padding: 5rem 10%;
+    }
+
+    .langue-slider {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .langue-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 20px;
+    }
+
+    .langue-item img {
+      width: 240px;
+      height: 160px;
+      margin-bottom: 15px;
+    }
+
+    .slider-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(100, 255, 218, 0.3);
+      color: #fff;
+      border: none;
+      font-size: 24px;
+      padding: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .slider-arrow:hover {
+      background-color: rgba(100, 255, 218, 0.5);
+    }
+
+    .prev {
+      left: 10px;
+    }
+
+    .next {
+      right: 10px;
+    }
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .bar {
+      display: block;
+      width: 25px;
+      height: 3px;
+      margin: 5px auto;
+      background-color: #64ffda;
+      transition: all 0.3s ease-in-out;
+    }
+
+    @media screen and (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        width: 100%;
+        text-align: center;
+        padding: 20px 0;
+      }
+
+      nav.active {
+        display: block;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav ul li {
+        margin: 10px 0;
+      }
+
+      .menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-toggle.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+
+      .menu-toggle.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+    }
   </style>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
@@ -292,163 +397,273 @@
     }
   </script>
 </head>
+</head>
 <body>
 <div id="particles-js"></div>
 
 <header>
+  <button class="menu-toggle" aria-label="Toggle menu">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
   <nav>
     <ul>
-      <li><a href="#accueil">Accueil</a></li>
-      <li><a href="#about-me">À propos de moi</a></li>
-      <li><a href="#projets">Projets</a></li>
-      <li><a href="#competences">Compétences</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#accueil" data-i18n="accueil">Accueil</a></li>
+      <li><a href="#about-me" data-i18n="apropos">À propos de moi</a></li>
+      <li><a href="#projets" data-i18n="projets">Projets</a></li>
+      <li><a href="#competences" data-i18n="competences">Compétences</a></li>
+      <li><a href="#langues" data-i18n="langues">Langues</a></li>
+      <li><a href="#contact" data-i18n="contact">Contact</a></li>
+      <li><a href="#" id="translate-fr" data-i18n="lang-fr">Français</a></li>
+      <li><a href="#" id="translate-en" data-i18n="lang-en">English</a></li>
+      <li><a href="#" id="translate-ar" data-i18n="lang-ar">العربية</a></li>
     </ul>
   </nav>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/21.6.10/i18next.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-i18next/1.2.1/jquery-i18next.min.js"></script>
+
 </header>
 
 <section id="accueil">
-  <h1 class="floating">LAHLOU Saad</h1>
-  <p>Développeur informatique</p>
+  <h1 class="floating" data-i18n="titre">LAHLOU Saad</h1>
+  <p data-i18n="job">Développeur informatique</p>
 </section>
 
 <section id="about-me">
   <div class="about-container">
     <div class="about-text">
-      <h2>À propos de moi</h2>
-        <p>
-          Salut ! Je suis Saad Lahlou, je suis étudiant à l'IUT de Lens et j'aime coder ce que j'aime. Relier mes passions à mes projets de développement est une source constante d'inspiration. Si je peux simplifier une tâche du quotidien, j'adore trouver des solutions et relever des défis. Mon objectif est de créer des solutions innovantes qui améliorent l'expérience utilisateur et facilitent les tâches quotidiennes. J'ai une solide expérience en développement web, automatisation, et gestion des API. Si vous souhaitez en apprendre plus sur moi, ou me contacter, n'hésitez plus, vous pouvez explorer ce site ou télécharger mon CV ! :)
-        </p>
+      <h2 data-i18n="apropos">À propos de moi</h2>
+      <p data-i18n="about-text">
+        Salut ! Je suis Saad Lahlou, je suis étudiant à l'IUT de Lens et j'aime coder ce que j'aime. Relier mes passions à mes projets de développement est une source constante d'inspiration. Si je peux simplifier une tâche du quotidien, j'adore trouver des solutions et relever des défis. Mon objectif est de créer des solutions innovantes qui améliorent l'expérience utilisateur et facilitent les tâches quotidiennes. J'ai une solide expérience en développement web, automatisation, et gestion des API. Si vous souhaitez en apprendre plus sur moi, ou me contacter, n'hésitez plus, vous pouvez explorer ce site ou télécharger mon CV ! :)
+      </p>
     </div>
     <div class="about-image">
-        <img src="image_saad_lahlou.png" alt="Image Saad Lahlou">
-  </div>
+      <img src="image_saad_lahlou.png" alt="Image Saad Lahlou" data-i18n="[alt]image-alt">
+    </div>
   </div>
 </section>
 
 <section id="projets">
-  <h2>Mes Projets</h2>
-  <div class="projet-grid">
-    <a href="#" class="projet-card enhanced-animate">
-      <h3>
-        Bot Spotify pour l'automatisation en utilisant Selenium</h3>
-      <p>Ce projet consiste en un bot développé en Python utilisant Selenium pour automatiser des interactions sur la plateforme Spotify. Le bot est capable de créer des comptes Spotify et d’effectuer des actions prédéfinies telles que liker des playlists, ajouter des titres à des playlists personnalisées, et bien plus, tout en automatisant la résolution de CAPTCHA. Ce projet met en avant mes compétences en automatisation, en gestion des API, et en utilisation de Selenium pour interagir de manière fluide avec des sites web complexes. Il est idéal pour automatiser des tâches répétitives sur des plateformes de streaming, récupérer des données via le web scraping, et gérer du threading afin de créer de nouveaux drivers en simultané. Ce projet combine efficacité et technologie pour optimiser l'expérience utilisateur.</p>
-    </a>
-    <a href="https://github.com/lahlousaad4/Spotify-insights.git" class="projet-card enhanced-animate">
-      <h3>
-        Spotify Insights : Application Flask pour Explorer les Top Artistes et Chansons</h3>
-      <p>Ce projet consiste en une application web développée avec Flask et utilisant l'API de Spotify pour afficher les artistes, les chansons et les genres les plus écoutés sur différentes périodes : 4 semaines, 6 mois et 12 mois. L'application offre également une fonctionnalité de recherche où l'utilisateur peut entrer un terme, et l'application récupère les chansons les plus adaptées avec des informations détaillées telles que le titre, l'artiste, la durée et la date de sortie. En outre, pour les artistes, le projet utilise Selenium pour effectuer du web scraping et récupérer des données supplémentaires comme le nombre d'auditeurs mensuels, la description de l'artiste, ainsi que les cinq villes où l'artiste est le plus écouté. Ce projet combine la gestion de l'API de Spotify et l'automatisation du scraping pour offrir une expérience interactive et riche en données musicales.</p>
-    </a>
-    <a href="#" class="projet-card enhanced-animate">
-      <h3>
-        StreamBot - IPTV Discord Bot</h3>
-      <p>Ce projet consiste en un bot Discord développé avec Python et la bibliothèque discord.py, permettant aux utilisateurs d'interagir avec un système IPTV. Le bot charge une liste de chaînes IPTV au format M3U et propose une fonctionnalité de recherche pour trouver les chaînes correspondant à un mot-clé donné (par exemple, un nom de chaîne). Lorsque l'utilisateur lance la commande de recherche, le bot répond avec les chaînes correspondant à sa recherche et lui fournit un lien pour regarder la chaîne en direct via un serveur Flask. Le bot utilise également des commandes permettant de jouer des chaînes en utilisant un lecteur intégré sur un serveur local, avec une interface simple et intuitive.</p>
-    </a>
+  <h2 data-i18n="projets">Mes Projets</h2>
+  <div class="projet-buttons" style="text-align: center; margin-bottom: 20px;">
+    <button id="btn-perso" class="projet-btn" data-i18n="projets-perso">Projets Personnels</button>
+    <button id="btn-pro" class="projet-btn" data-i18n="projets-pro">Projets Professionnels</button>
+  </div>
+
+  <div id="projets-perso" class="projet-grid" style="display: none;">
+    <div class="projet-card enhanced-animate">
+      <div class="projet-card-inner">
+        <div class="projet-card-front">
+          <h3 data-i18n="projet-perso-1-titre">Création d'un studio d'enregistrement musical</h3>
+          <p data-i18n="projet-perso-1-desc">Mise en place et aménagement d'un espace dédié à l'enregistrement et la production musicale.</p>
+        </div>
+        <div class="projet-card-back">
+          <h3 data-i18n="projet-perso-1-details">Détails du projet</h3>
+          <p data-i18n="projet-perso-1-detail-1">Gestion des sessions d'enregistrement pour des artistes.</p>
+          <p data-i18n="projet-perso-1-detail-2">Supervision technique des morceaux: enregistrement, mixage, et mastering.</p>
+          <p data-i18n="projet-perso-1-detail-3">Gestion des réservations, de la communication sur les réseaux sociaux et de la facturation des artistes.</p>
+        </div>
+      </div>
+    </div>
+    <div class="projet-card enhanced-animate">
+      <div class="projet-card-inner">
+        <div class="projet-card-front">
+          <h3 data-i18n="projet-perso-2-titre">Co-fondateur d'une marque de vêtements streetwear</h3>
+          <p data-i18n="projet-perso-2-desc">Création et design des produits (t-shirts, sweats, etc.).</p>
+        </div>
+        <div class="projet-card-back">
+          <h3 data-i18n="projet-perso-2-details">Détails du projet</h3>
+          <p data-i18n="projet-perso-2-detail-1">Négociation et collaboration avec des fournisseurs locaux pour la fabrication.</p>
+          <p data-i18n="projet-perso-2-detail-2">Développement de l'identité de marque.</p>
+          <p data-i18n="projet-perso-2-detail-3">Stratégie de marketing et de vente.</p>
+        </div>
+      </div>
+    </div>
+    <div class="projet-card enhanced-animate">
+      <div class="projet-card-inner">
+        <div class="projet-card-front">
+          <h3 data-i18n="projet-perso-3-titre">Production d'un album musical et réalisation de clips vidéo</h3>
+          <p data-i18n="projet-perso-3-desc">Enregistrement et production musicale.</p>
+        </div>
+        <div class="projet-card-back">
+          <h3 data-i18n="projet-perso-3-details">Détails du projet</h3>
+          <p data-i18n="projet-perso-3-detail-1">Réalisation, montage, et édition des clips accompagnant l'album.</p>
+          <p data-i18n="projet-perso-3-detail-2">Stratégie de diffusion et promotion sur les plateformes digitales (YouTube, Spotify, etc.).</p>
+          <p data-i18n="projet-perso-3-detail-3">Coordination artistique et technique.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="projets-pro" class="projet-grid">
+    <div class="projet-card enhanced-animate">
+      <div class="projet-card-inner">
+        <div class="projet-card-front">
+          <h3 data-i18n="projet-pro-1-titre">Bot Spotify pour l'automatisation en utilisant Selenium</h3>
+          <p data-i18n="projet-pro-1-desc">Automatisation des interactions sur Spotify (création de comptes, gestion de playlists).</p>
+        </div>
+        <div class="projet-card-back">
+          <h3 data-i18n="projet-pro-1-details">Détails techniques</h3>
+          <p data-i18n="projet-pro-1-detail-1">Utilisation de Selenium pour l'interaction avec la plateforme.</p>
+          <p data-i18n="projet-pro-1-detail-2">Résolution de CAPTCHA automatisée et gestion multithreading.</p>
+          <p data-i18n="projet-pro-1-detail-3">Technologies utilisées : Python, Selenium, API Spotify</p>
+        </div>
+      </div>
+    </div>
+    <div class="projet-card enhanced-animate">
+      <div class="projet-card-inner">
+        <div class="projet-card-front">
+          <h3 data-i18n="projet-pro-2-titre">Spotify Insights : Application Flask pour Explorer les Top Artistes et Chansons</h3>
+          <p data-i18n="projet-pro-2-desc">Application web pour explorer les artistes, chansons et genres les plus écoutés.</p>
+        </div>
+        <div class="projet-card-back">
+          <h3 data-i18n="projet-pro-2-details">Détails techniques</h3>
+          <p data-i18n="projet-pro-2-detail-1">Utilisation de l'API Spotify pour récupérer les données musicales.</p>
+          <p data-i18n="projet-pro-2-detail-2">Web scraping avec Selenium pour des informations supplémentaires (auditeurs, villes).</p>
+          <p data-i18n="projet-pro-2-detail-3">Technologies : Flask, Python, Selenium, API Spotify</p>
+        </div>
+      </div>
+    </div>
+    <div class="projet-card enhanced-animate">
+      <div class="projet-card-inner">
+        <div class="projet-card-front">
+          <h3 data-i18n="projet-pro-3-titre">StreamBot - IPTV Discord Bot</h3>
+          <p data-i18n="projet-pro-3-desc">Bot Discord permettant de rechercher et diffuser des chaînes IPTV.</p>
+        </div>
+        <div class="projet-card-back">
+          <h3 data-i18n="projet-pro-3-details">Détails techniques</h3>
+          <p data-i18n="projet-pro-3-detail-1">Chargement de listes M3U et lecture via un serveur Flask.</p>
+          <p data-i18n="projet-pro-3-detail-2">Commandes simples sur discord pour une expérience utilisateur intuitive.</p>
+          <p data-i18n="projet-pro-3-detail-3">Technologies : Python, Discord.py, Flask</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <section id="competences">
-  <h2>Mes Compétences</h2>
+  <h2 data-i18n="competences">Mes Compétences</h2>
   <div class="competence-grid">
     <div class="competence-item enhanced-animate" data-skill="90">
       <svg viewBox="0 0 100 100">
         <circle cx="50" cy="50" r="45" />
         <circle cx="50" cy="50" r="45" class="progress" />
       </svg>
-      <span>HTML/CSS</span>
+      <span data-i18n="competence-1">HTML/CSS</span>
     </div>
     <div class="competence-item enhanced-animate" data-skill="80">
       <svg viewBox="0 0 100 100">
         <circle cx="50" cy="50" r="45" />
         <circle cx="50" cy="50" r="45" class="progress" />
       </svg>
-      <span>Python</span>
+      <span data-i18n="competence-2">Python</span>
     </div>
     <div class="competence-item enhanced-animate" data-skill="75">
       <svg viewBox="0 0 100 100">
         <circle cx="50" cy="50" r="45" />
         <circle cx="50" cy="50" r="45" class="progress" />
       </svg>
-      <span>Java/JavaFX</span>
+      <span data-i18n="competence-3">Java/JavaFX</span>
     </div>
     <div class="competence-item enhanced-animate" data-skill="80">
       <svg viewBox="0 0 100 100">
         <circle cx="50" cy="50" r="45" />
         <circle cx="50" cy="50" r="45" class="progress" />
       </svg>
-      <span>PostgreSQL</span>
+      <span data-i18n="competence-4">PostgreSQL</span>
     </div>
     <div class="competence-item enhanced-animate" data-skill="70">
       <svg viewBox="0 0 100 100">
         <circle cx="50" cy="50" r="45" />
         <circle cx="50" cy="50" r="45" class="progress" />
       </svg>
-      <span>PHP</span>
+      <span data-i18n="competence-5">PHP</span>
     </div>
     <div class="competence-item enhanced-animate" data-skill="90">
       <svg viewBox="0 0 100 100">
         <circle cx="50" cy="50" r="45" />
         <circle cx="50" cy="50" r="45" class="progress" />
       </svg>
-      <span>Git</span>
+      <span data-i18n="competence-6">Git</span>
     </div>
     <div class="competence-item enhanced-animate" data-skill="90">
       <svg viewBox="0 0 100 100">
         <circle cx="50" cy="50" r="45" />
         <circle cx="50" cy="50" r="45" class="progress" />
       </svg>
-      <span>Anglais</span>
+      <span data-i18n="competence-7">Anglais</span>
     </div>
     <div class="competence-item enhanced-animate" data-skill="95">
       <svg viewBox="0 0 100 100">
         <circle cx="50" cy="50" r="45" />
         <circle cx="50" cy="50" r="45" class="progress" />
       </svg>
-      <span>Selenium</span>
+      <span data-i18n="competence-8">Selenium</span>
     </div>
     <div class="competence-item enhanced-animate" data-skill="90">
       <svg viewBox="0 0 100 100">
         <circle cx="50" cy="50" r="45" />
         <circle cx="50" cy="50" r="45" class="progress" />
       </svg>
-      <span>API</span>
+      <span data-i18n="competence-9">API</span>
     </div>
     <div class="competence-item enhanced-animate" data-skill="80">
       <svg viewBox="0 0 100 100">
         <circle cx="50" cy="50" r="45" />
         <circle cx="50" cy="50" r="45" class="progress" />
       </svg>
-      <span>Web Scraping</span>
+      <span data-i18n="competence-10">Web Scraping</span>
     </div>
   </div>
 
   <a href="CV-Lahlou-Saad.pdf" download class="download-cv">
     <i class="fas fa-download"></i>
-    Télécharger mon CV
+    <span data-i18n="telecharger-cv">Télécharger mon CV
+    </span>
   </a>
 </section>
 
+<section id="langues">
+  <h2 data-i18n="langues">Langues</h2>
+  <div class="langue-slider">
+    <div class="langue-item">
+      <img src="france.png" alt="Drapeau français" data-i18n="[alt]drapeau-francais">
+      <span data-i18n="francais">Français (Natif)</span>
+    </div>
+    <div class="langue-item">
+      <img src="uk.png" alt="Drapeau anglais" data-i18n="[alt]drapeau-anglais">
+      <span data-i18n="anglais">Anglais (Courant)</span>
+    </div>
+    <div class="langue-item">
+      <img src="arabe.jpg" alt="Drapeau arabe" data-i18n="[alt]drapeau-arabe">
+      <span data-i18n="arabe">Arabe (Natif)</span>
+    </div>
+    <button class="slider-arrow prev" data-i18n="precedent">&#10094;</button>
+    <button class="slider-arrow next" data-i18n="suivant">&#10095;</button>
+  </div>
+</section>
 
 <section id="contact">
-  <h2>Me Contacter</h2>
+  <h2 data-i18n="contact">Me Contacter</h2>
   <div class="contact-buttons">
     <a href="https://github.com/lahlousaad4" target="_blank" class="contact-button">
       <i class="fab fa-github"></i>
-      GitHub
+      <span data-i18n="github">GitHub</span>
     </a>
     <a href="mailto:tlahlou.saad@gmail.com" class="contact-button">
       <i class="fas fa-envelope"></i>
-      Email
+      <span data-i18n="email">Email</span>
     </a>
     <a href="https://www.linkedin.com/in/saad-lahlou-8523982a2/" target="_blank" class="contact-button">
       <i class="fab fa-linkedin"></i>
-      LinkedIn
+      <span data-i18n="linkedin">LinkedIn</span>
     </a>
   </div>
 </section>
 
 <footer>
-  <p>&copy; 2024 Saad Lahlou. Tous droits réservés.</p>
+  <p>&copy; 2024 Saad Lahlou. <span data-i18n="droits-reserves">Tous droits réservés.</span></p>
 </footer>
 
 <script>
@@ -516,8 +731,366 @@
     });
   }
 
+  document.addEventListener('DOMContentLoaded', function() {
+    const slider = document.querySelector('.langue-slider');
+    const items = document.querySelectorAll('.langue-item');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+    let currentIndex = 0;
+
+    function showItem(index) {
+      items.forEach((item, i) => {
+        item.style.display = i === index ? 'flex' : 'none';
+      });
+    }
+
+    function nextItem() {
+      currentIndex = (currentIndex + 1) % items.length;
+      showItem(currentIndex);
+    }
+
+    function prevItem() {
+      currentIndex = (currentIndex - 1 + items.length) % items.length;
+      showItem(currentIndex);
+    }
+
+    nextBtn.addEventListener('click', nextItem);
+    prevBtn.addEventListener('click', prevItem);
+
+    showItem(currentIndex);
+  });
+
+  document.getElementById('btn-perso').addEventListener('click', function() {
+    document.getElementById('projets-perso').style.display = 'grid';
+    document.getElementById('projets-pro').style.display = 'none';
+  });
+
+  document.getElementById('btn-pro').addEventListener('click', function() {
+    document.getElementById('projets-pro').style.display = 'grid';
+    document.getElementById('projets-perso').style.display = 'none';
+  });
+
+  document.querySelectorAll('.projet-card').forEach(card => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('flipped');
+    });
+  });
+
+  document.getElementById('btn-perso').addEventListener('click', function() {
+    document.getElementById('projets-perso').style.display = 'grid';
+    document.getElementById('projets-pro').style.display = 'none';
+  });
+
+  document.getElementById('btn-pro').addEventListener('click', function() {
+    document.getElementById('projets-pro').style.display = 'grid';
+    document.getElementById('projets-perso').style.display = 'none';
+  });
   window.addEventListener('scroll', handleScroll);
   window.addEventListener('load', handleScroll);
+
+
+  document.addEventListener('DOMContentLoaded', function() {
+    i18next.init({
+      lng: 'fr',
+      resources: {
+        fr: {
+          translation: {
+            "titreSite": "Portfolio de Saad Lahlou",
+            "accueil": "Accueil",
+            "apropos": "À propos de moi",
+            "projets": "Projets",
+            "competences": "Compétences",
+            "langues": "Langues",
+            "contact": "Contact",
+            "titre": "LAHLOU Saad",
+            "job": "Développeur informatique",
+            "about-text": "Salut ! Je suis Saad Lahlou, je suis étudiant à l'IUT de Lens et j'aime coder ce que j'aime. Relier mes passions à mes projets de développement est une source constante d'inspiration. Si je peux simplifier une tâche du quotidien, j'adore trouver des solutions et relever des défis. Mon objectif est de créer des solutions innovantes qui améliorent l'expérience utilisateur et facilitent les tâches quotidiennes. J'ai une solide expérience en développement web, automatisation, et gestion des API. Si vous souhaitez en apprendre plus sur moi, ou me contacter, n'hésitez plus, vous pouvez explorer ce site ou télécharger mon CV ! :)",
+            "projets-perso": "Projets Personnels",
+            "projets-pro": "Projets Professionnels",
+            "telecharger-cv": "Télécharger mon CV",
+            "francais": "Français (Natif)",
+            "anglais": "Anglais (Courant)",
+            "arabe": "Arabe (Natif)",
+            "precedent": "Précédent",
+            "suivant": "Suivant",
+            "droits-reserves": "Tous droits réservés.",
+            "image-alt": "Image de Saad Lahlou",
+            "projet-perso-1-titre": "Création d'un studio d'enregistrement musical",
+            "projet-perso-1-desc": "Mise en place et aménagement d'un espace dédié à l'enregistrement et la production musicale.",
+            "projet-perso-1-details": "Détails du projet",
+            "projet-perso-1-detail-1": "Gestion des sessions d'enregistrement pour des artistes.",
+            "projet-perso-1-detail-2": "Supervision technique des morceaux: enregistrement, mixage, et mastering.",
+            "projet-perso-1-detail-3": "Gestion des réservations, de la communication sur les réseaux sociaux et de la facturation des artistes.",
+            "projet-perso-2-titre": "Co-fondateur d'une marque de vêtements streetwear",
+            "projet-perso-2-desc": "Création et design des produits (t-shirts, sweats, etc.).",
+            "projet-perso-2-details": "Détails du projet",
+            "projet-perso-2-detail-1": "Négociation et collaboration avec des fournisseurs locaux pour la fabrication.",
+            "projet-perso-2-detail-2": "Développement de l'identité de marque.",
+            "projet-perso-2-detail-3": "Stratégie de marketing et de vente.",
+            "projet-perso-3-titre": "Production d'un album musical et réalisation de clips vidéo",
+            "projet-perso-3-desc": "Enregistrement et production musicale.",
+            "projet-perso-3-details": "Détails du projet",
+            "projet-perso-3-detail-1": "Réalisation, montage, et édition des clips accompagnant l'album.",
+            "projet-perso-3-detail-2": "Stratégie de diffusion et promotion sur les plateformes digitales (YouTube, Spotify, etc.).",
+            "projet-perso-3-detail-3": "Coordination artistique et technique.",
+            "projet-pro-1-titre": "Bot Spotify pour l'automatisation en utilisant Selenium",
+            "projet-pro-1-desc": "Automatisation des interactions sur Spotify (création de comptes, gestion de playlists).",
+            "projet-pro-1-details": "Détails techniques",
+            "projet-pro-1-detail-1": "Utilisation de Selenium pour l'interaction avec la plateforme.",
+            "projet-pro-1-detail-2": "Résolution de CAPTCHA automatisée et gestion multithreading.",
+            "projet-pro-1-detail-3": "Technologies utilisées : Python, Selenium, API Spotify",
+            "projet-pro-2-titre": "Spotify Insights : Application Flask pour Explorer les Top Artistes et Chansons",
+            "projet-pro-2-desc": "Application web pour explorer les artistes, chansons et genres les plus écoutés.",
+            "projet-pro-2-details": "Détails techniques",
+            "projet-pro-2-detail-1": "Utilisation de l'API Spotify pour récupérer les données musicales.",
+            "projet-pro-2-detail-2": "Web scraping avec Selenium pour des informations supplémentaires (auditeurs, villes).",
+            "projet-pro-2-detail-3": "Technologies : Flask, Python, Selenium, API Spotify",
+            "projet-pro-3-titre": "StreamBot - IPTV Discord Bot",
+            "projet-pro-3-desc": "Bot Discord permettant de rechercher et diffuser des chaînes IPTV.",
+            "projet-pro-3-details": "Détails techniques",
+            "projet-pro-3-detail-1": "Chargement de listes M3U et lecture via un serveur Flask.",
+            "projet-pro-3-detail-2": "Commandes simples sur discord pour une expérience utilisateur intuitive.",
+            "projet-pro-3-detail-3": "Technologies : Python, Discord.py, Flask",
+            "competence-1": "HTML/CSS",
+            "competence-2": "Python",
+            "competence-3": "Java/JavaFX",
+            "competence-4": "PostgreSQL",
+            "competence-5": "PHP",
+            "competence-6": "Git",
+            "competence-7": "Anglais",
+            "competence-8": "Selenium",
+            "competence-9": "API",
+            "competence-10": "Web Scraping",
+            "drapeau-francais": "Drapeau français",
+            "drapeau-anglais": "Drapeau anglais",
+            "drapeau-arabe": "Drapeau arabe",
+            "github": "GitHub",
+            "email": "Email",
+            "linkedin": "LinkedIn",
+            "lang-fr": "Français",
+            "lang-en": "Anglais",
+            "lang-ar": "Arabe",
+          }
+        },
+        en: {
+          translation: {
+            "titreSite": "Saad Lahlou's portfolio",
+            "accueil": "Home",
+            "apropos": "About me",
+            "projets": "Projects",
+            "competences": "Skills",
+            "langues": "Languages",
+            "contact": "Contact",
+            "titre": "LAHLOU Saad",
+            "job": "Software Developer",
+            "about-text": "Hi! I'm Saad Lahlou, I'm a student at IUT de Lens and I love coding what I like. Connecting my passions to my development projects is a constant source of inspiration. If I can simplify an everyday task, I love finding solutions and taking on challenges. My goal is to create innovative solutions that improve user experience and facilitate daily tasks. I have solid experience in web development, automation, and API management. If you want to learn more about me, or contact me, don't hesitate, you can explore this site or download my CV! :)",
+            "projets-perso": "Personal Projects",
+            "projets-pro": "Professional Projects",
+            "telecharger-cv": "Download my CV",
+            "francais": "French (Native)",
+            "anglais": "English (Fluent)",
+            "arabe": "Arabic (Native)",
+            "precedent": "Previous",
+            "suivant": "Next",
+            "droits-reserves": "All rights reserved.",
+            "image-alt": "Image of Saad Lahlou",
+            "projet-perso-1-titre": "Creation of a music recording studio",
+            "projet-perso-1-desc": "Setting up and arranging a dedicated space for music recording and production.",
+            "projet-perso-1-details": "Project details",
+            "projet-perso-1-detail-1": "Management of recording sessions for artists.",
+            "projet-perso-1-detail-2": "Technical supervision of tracks: recording, mixing, and mastering.",
+            "projet-perso-1-detail-3": "Management of bookings, social media communication, and artist billing.",
+            "projet-perso-2-titre": "Co-founder of a streetwear clothing brand",
+            "projet-perso-2-desc": "Creation and design of products (t-shirts, sweatshirts, etc.).",
+            "projet-perso-2-details": "Project details",
+            "projet-perso-2-detail-1": "Negotiation and collaboration with local suppliers for manufacturing.",
+            "projet-perso-2-detail-2": "Development of brand identity.",
+            "projet-perso-2-detail-3": "Marketing and sales strategy.",
+            "projet-perso-3-titre": "Production of a music album and creation of music videos",
+            "projet-perso-3-desc": "Music recording and production.",
+            "projet-perso-3-details": "Project details",
+            "projet-perso-3-detail-1": "Direction, editing, and production of videos accompanying the album.",
+            "projet-perso-3-detail-2": "Distribution strategy and promotion on digital platforms (YouTube, Spotify, etc.).",
+            "projet-perso-3-detail-3": "Artistic and technical coordination.",
+            "projet-pro-1-titre": "Spotify Bot for automation using Selenium",
+            "projet-pro-1-desc": "Automation of interactions on Spotify (account creation, playlist management).",
+            "projet-pro-1-details": "Technical details",
+            "projet-pro-1-detail-1": "Use of Selenium for platform interaction.",
+            "projet-pro-1-detail-2": "Automated CAPTCHA resolution and multithreading management.",
+            "projet-pro-1-detail-3": "Technologies used: Python, Selenium, Spotify API",
+            "projet-pro-2-titre": "Spotify Insights: Flask Application to Explore Top Artists and Songs",
+            "projet-pro-2-desc": "Web application to explore the most listened to artists, songs, and genres.",
+            "projet-pro-2-details": "Technical details",
+            "projet-pro-2-detail-1": "Use of the Spotify API to retrieve music data.",
+            "projet-pro-2-detail-2": "Web scraping with Selenium for additional information (listeners, cities).",
+            "projet-pro-2-detail-3": "Technologies: Flask, Python, Selenium, Spotify API",
+            "projet-pro-3-titre": "StreamBot - IPTV Discord Bot",
+            "projet-pro-3-desc": "Discord bot for searching and streaming IPTV channels.",
+            "projet-pro-3-details": "Technical details",
+            "projet-pro-3-detail-1": "Loading of M3U lists and playback via a Flask server.",
+            "projet-pro-3-detail-2": "Simple commands on Discord for an intuitive user experience.",
+            "projet-pro-3-detail-3": "Technologies: Python, Discord.py, Flask",
+            "competence-1": "HTML/CSS",
+            "competence-2": "Python",
+            "competence-3": "Java/JavaFX",
+            "competence-4": "PostgreSQL",
+            "competence-5": "PHP",
+            "competence-6": "Git",
+            "competence-7": "English",
+            "competence-8": "Selenium",
+            "competence-9": "API",
+            "competence-10": "Web Scraping",
+            "drapeau-francais": "French flag",
+            "drapeau-anglais": "English flag",
+            "drapeau-arabe": "Arabic flag",
+            "github": "GitHub",
+            "email": "Email",
+            "linkedin": "LinkedIn",
+            "lang-fr": "French",
+            "lang-en": "English",
+            "lang-ar": "Arabic",
+          }
+        },
+        ar: {
+          translation: {
+            "titreSite": "محفظة سعد لحلو",
+            "accueil": "الرئيسية",
+            "apropos": "عني",
+            "projets": "المشاريع",
+            "competences": "المهارات",
+            "langues": "اللغات",
+            "contact": "اتصل بي",
+            "titre": "سعد لحلو",
+            "job": "مطور برمجيات",
+            "about-text": "مرحبًا! أنا سعد لحلو، طالب في IUT de Lens وأحب برمجة ما أحب. ربط شغفي بمشاريع التطوير الخاصة بي هو مصدر دائم للإلهام. إذا كان بإمكاني تبسيط مهمة يومية، فأنا أحب إيجاد الحلول ومواجهة التحديات. هدفي هو إنشاء حلول مبتكرة تحسن تجربة المستخدم وتسهل المهام اليومية. لدي خبرة قوية في تطوير الويب والأتمتة وإدارة واجهات برمجة التطبيقات. إذا كنت ترغب في معرفة المزيد عني أو الاتصال بي، فلا تتردد، يمكنك استكشاف هذا الموقع أو تنزيل سيرتي الذاتية! :)",
+            "projets-perso": "المشاريع الشخصية",
+            "projets-pro": "المشاريع المهنية",
+            "telecharger-cv": "تحميل سيرتي الذاتية",
+            "francais": "الفرنسية (اللغة الأم)",
+            "anglais": "الإنجليزية (طلاقة)",
+            "arabe": "العربية (اللغة الأم)",
+            "precedent": "السابق",
+            "suivant": "التالي",
+            "droits-reserves": "جميع الحقوق محفوظة.",
+            "image-alt": "صورة سعد لحلو",
+            "projet-perso-1-titre": "إنشاء استوديو تسجيل موسيقي",
+            "projet-perso-1-desc": "إعداد وتجهيز مساحة مخصصة لتسجيل وإنتاج الموسيقى.",
+            "projet-perso-1-details": "تفاصيل المشروع",
+            "projet-perso-1-detail-1": "إدارة جلسات التسجيل للفنانين.",
+            "projet-perso-1-detail-2": "الإشراف التقني على المقطوعات: التسجيل والمزج والماسترينغ.",
+            "projet-perso-1-detail-3": "إدارة الحجوزات والتواصل عبر وسائل التواصل الاجتماعي وفواتير الفنانين.",
+            "projet-perso-2-titre": "مؤسس مشارك لعلامة ملابس الشارع",
+            "projet-perso-2-desc": "إنشاء وتصميم المنتجات (القمصان والسترات وما إلى ذلك).",
+            "projet-perso-2-details": "تفاصيل المشروع",
+            "projet-perso-2-detail-1": "التفاوض والتعاون مع الموردين المحليين للتصنيع.",
+            "projet-perso-2-detail-2": "تطوير هوية العلامة التجارية.",
+            "projet-perso-2-detail-3": "استراتيجية التسويق والمبيعات.",
+            "projet-perso-3-titre": "إنتاج ألبوم موسيقي وإنشاء مقاطع فيديو موسيقية",
+            "projet-perso-3-desc": "تسجيل وإنتاج الموسيقى.",
+            "projet-perso-3-details": "تفاصيل المشروع",
+            "projet-perso-3-detail-1": "إخراج وتحرير وإنتاج مقاطع الفيديو المصاحبة للألبوم.",
+            "projet-perso-3-detail-2": "استراتيجية التوزيع والترويج على المنصات الرقمية (يوتيوب، سبوتيفاي، إلخ).",
+            "projet-perso-3-detail-3": "التنسيق الفني والتقني.",
+            "projet-pro-1-titre": "بوت سبوتيفاي للأتمتة باستخدام سيلينيوم",
+            "projet-pro-1-desc": "أتمتة التفاعلات على سبوتيفاي (إنشاء الحسابات، إدارة قوائم التشغيل).",
+            "projet-pro-1-details": "التفاصيل التقنية",
+            "projet-pro-1-detail-1": "استخدام سيلينيوم للتفاعل مع المنصة.",
+            "projet-pro-1-detail-2": "حل CAPTCHA الآلي وإدارة تعدد المهام.",
+            "projet-pro-1-detail-3": "التقنيات المستخدمة: بايثون، سيلينيوم، واجهة برمجة تطبيقات سبوتيفاي",
+            "projet-pro-2-titre": "Spotify Insights: تطبيق Flask لاستكشاف أفضل الفنانين والأغاني",
+            "projet-pro-2-desc": "تطبيق ويب لاستكشاف الفنانين والأغاني والأنواع الموسيقية الأكثر استماعًا.",
+            "projet-pro-2-details": "التفاصيل التقنية",
+            "projet-pro-2-detail-1": "استخدام واجهة برمجة تطبيقات سبوتيفاي لاسترجاع البيانات الموسيقية.",
+            "projet-pro-2-detail-2": "استخراج البيانات من الويب باستخدام سيلينيوم للحصول على معلومات إضافية (المستمعين، المدن).",
+            "projet-pro-2-detail-3": "التقنيات: Flask، بايثون، سيلينيوم، واجهة برمجة تطبيقات سبوتيفاي",
+            "projet-pro-3-titre": "StreamBot - بوت IPTV لديسكورد",
+            "projet-pro-3-desc": "بوت ديسكورد للبحث وبث قنوات IPTV.",
+            "projet-pro-3-details": "التفاصيل التقنية",
+            "projet-pro-3-detail-1": "تحميل قوائم M3U والتشغيل عبر خادم Flask.",
+            "projet-pro-3-detail-2": "أوامر بسيطة على ديسكورد لتجربة مستخدم سهلة.",
+            "projet-pro-3-detail-3": "التقنيات: بايثون، Discord.py، Flask",
+            "competence-1": "HTML/CSS",
+            "competence-2": "بايثون",
+            "competence-3": "جافا/JavaFX",
+            "competence-4": "PostgreSQL",
+            "competence-5": "PHP",
+            "competence-6": "Git",
+            "competence-7": "الإنجليزية",
+            "competence-8": "سيلينيوم",
+            "competence-9": "واجهات برمجة التطبيقات",
+            "competence-10": "استخراج البيانات من الويب",
+            "drapeau-francais": "العلم الفرنسي",
+            "drapeau-anglais": "العلم الإنجليزي",
+            "drapeau-arabe": "العلم العربي",
+            "github": "جيثب",
+            "email": "البريد الإلكتروني",
+            "linkedin": "لينكد إن",
+            "lang-fr": "الفرنسية",
+            "lang-en": "الإنجليزية",
+            "lang-ar": "العربية"
+          }
+        }
+      }
+    });
+
+    function changeLang(lang) {
+      console.log('Changing language to:', lang);
+      i18next.changeLanguage(lang, (err, t) => {
+        if (err) return console.error('Error changing language:', err);
+        updateContent();
+      });
+    }
+
+    function updateContent() {
+      document.querySelectorAll('[data-i18n]').forEach(elem => {
+        const key = elem.getAttribute('data-i18n');
+        elem.textContent = i18next.t(key);
+      });
+      document.body.dir = i18next.language === 'ar' ? 'rtl' : 'ltr';
+      updateCVLink();
+    }
+
+    document.getElementById('translate-fr').addEventListener('click', () => changeLang('fr'));
+    document.getElementById('translate-en').addEventListener('click', () => changeLang('en'));
+    document.getElementById('translate-ar').addEventListener('click', () => changeLang('ar'));
+
+    // Initial content update
+    updateContent();
+  });
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+
+    menuToggle.addEventListener('click', function() {
+      menuToggle.classList.toggle('active');
+      nav.classList.toggle('active');
+    });
+
+    // Fermer le menu lorsqu'un lien est cliqué
+    const navLinks = document.querySelectorAll('nav ul li a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        nav.classList.remove('active');
+      });
+    });
+  });
+  function updateCVLink() {
+    const cvLink = document.querySelector('.download-cv');
+    const lang = i18next.language;
+    let cvFileName = 'CV-Lahlou-Saad.pdf';
+
+    if (lang === 'en') {
+      cvFileName = 'CV-Lahlou-Saad-en.pdf';
+    } else if (lang === 'ar') {
+      cvFileName = 'CV-Lahlou-Saad-ar.pdf';
+    }
+
+    cvLink.setAttribute('href', cvFileName);
+  }
+
+
+
 </script>
 </body>
 </html>
